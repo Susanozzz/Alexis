@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Feliz cumpleaños amor</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #ffe6f0, #fff7fb);
+      font-family: 'Open Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .gift-box {
+      width: 200px;
+      height: 200px;
+      background: linear-gradient(45deg, #ff6aa9, #ffc3d1);
+      border: 4px solid #fff;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+      animation: pulse 2s infinite;
+    }
+
+    .gift-box::before {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 100%;
+      background: #fff;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .gift-box::after {
+      content: "";
+      position: absolute;
+      height: 20px;
+      width: 100%;
+      background: #fff;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .gift-text {
+      font-weight: bold;
+      color: white;
+      z-index: 1;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .content {
+      display: none;
+      padding: 30px;
+      animation: fadeIn 2s ease;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: #d63384;
+      margin-top: 20px;
+    }
+
+    .mensaje {
+      background: #ffffffcc;
+      border-radius: 15px;
+      padding: 25px;
+      max-width: 700px;
+      margin: 20px auto;
+      font-size: 1.2rem;
+      color: #5a2a55;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .balloon {
+      position: absolute;
+      width: 40px;
+      height: 60px;
+      background-color: #ff88cc;
+      border-radius: 50% 50% 50% 50%;
+      animation: rise 6s ease-in-out infinite;
+    }
+
+    @keyframes rise {
+      0% { bottom: -100px; opacity: 0; }
+      20% { opacity: 1; }
+      100% { bottom: 100%; opacity: 0; }
+    }
+
+    .streamers {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .streamer {
+      width: 10px;
+      height: 50px;
+      position: absolute;
+      background: linear-gradient(to bottom, #ffc107, #ff4081);
+      animation: fall 3s linear infinite;
+    }
+
+    @keyframes fall {
+      0% { top: -60px; opacity: 1; }
+      100% { top: 100%; opacity: 0; }
+    }
+
+    iframe {
+      margin-top: 30px;
+    }
+
+    footer {
+      margin-top: 30px;
+      color: #b0638f;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="gift-box" onclick="abrirRegalo()">
+      <div class="gift-text">Tienes un regalo de Jefferson 🎁</div>
+    </div>
+
+    <div class="content" id="contenido">
+      <h1>Feliz cumpleaños amor</h1>
+      <div class="mensaje">
+        Hoy quiero recordarte lo mucho que te amo y lo importante que eres para mí.  
+        Aunque no podamos vernos en este día tan especial, quiero que sientas mi abrazo en cada palabra  
+        y mi amor en cada latido.  
+        Deseo que pases un cumpleaños hermoso, lleno de paz, alegría y sonrisas sinceras.  
+        Gracias por existir, por ser tú, por hacerme tan feliz.  
+        No hay distancia que pueda cambiar lo que siento por ti.  
+        Te amo con todo mi corazón. 💖
+      </div>
+
+      <iframe width="300" height="150" src="https://www.youtube.com/embed/u-_0fkY9FhI?autoplay=1&loop=1&playlist=u-_0fkY9FhI" 
+        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+      <footer>Con todo mi amor, para ti 💝</footer>
+    </div>
+
+    <!-- Globos -->
+    <div class="streamers" id="globos"></div>
+  </div>
+
+  <script>
+    function abrirRegalo() {
+      document.querySelector('.gift-box').style.display = 'none';
+      const contenido = document.getElementById('contenido');
+      contenido.style.display = 'block';
+      lanzarGlobosYSerpentinas();
+    }
+
+    function lanzarGlobosYSerpentinas() {
+      const contenedor = document.getElementById('globos');
+
+      // Globos
+      for (let i = 0; i < 20; i++) {
+        const b = document.createElement('div');
+        b.classList.add('balloon');
+        b.style.left = Math.random() * 100 + '%';
+        b.style.backgroundColor = `hsl(${Math.random() * 360}, 80%, 70%)`;
+        b.style.animationDelay = `${Math.random() * 3}s`;
+        contenedor.appendChild(b);
+      }
+
+      // Serpentinas
+      for (let i = 0; i < 40; i++) {
+        const s = document.createElement('div');
+        s.classList.add('streamer');
+        s.style.left = Math.random() * 100 + '%';
+        s.style.background = `linear-gradient(to bottom, hsl(${Math.random() * 360}, 90%, 60%), white)`;
+        s.style.animationDelay = `${Math.random() * 2}s`;
+        contenedor.appendChild(s);
+      }
+    }
+  </script>
+</body>
+</html>
